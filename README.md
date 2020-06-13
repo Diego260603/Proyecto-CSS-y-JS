@@ -4,6 +4,6 @@
 
 Integrantes:
 1. Gabriel Rivas
-2. Abrham
+2. Abraham López
 3. Maximiliano Ruíz
 4. Diego Muriel
