@@ -1,0 +1,367 @@
+/*-----------FUENTES----------*/
+@font-face {
+  font-family: "Sansation";
+  src: url(../libs/fontawesome/FONTS/Sansation_Regular.ttf);
+}
+@font-face {
+  font-family: "Orbitron";
+  src: url(../libs/fontawesome/FONTS/Orbitron-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: "Overlock-SC";
+  src: url(../libs/fontawesome/FONTS/OverlockSC-Regular.ttf);
+}
+@font-face {
+  font-family: "Overpass";
+  src: url(../libs/fontawesome/FONTS/Overpass-Regular.ttf);
+}
+@font-face {
+  font-family: "Inconsolata";
+  src: url(../libs/fontawesome/FONTS/Inconsolata-VariableFont_wdthwght.ttf);
+}
+@font-face {
+  font-family: "Chido";
+  src: url(../libs/fontawesome/FONTS/MetalMania-Regular.ttf);
+}
+/*-------------MEDIA QUERI PARA EL ANCHO Y LA ORIENTACION INCORRECTOS-------------*/
+@media screen and (max-width: 1800px) and (orientation: portrait){
+  body{
+    background-color: #B35900;
+  }
+  footer{
+    background-color: #FF8C19;
+    font-family: "Overpass";
+  }
+  header{
+    background-color: #FF8000;
+    position: relative;
+    top: 0%;
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
+  }
+  header>section{
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+  }
+  noscript>img{
+    width: 100vw;
+    height: auto;
+  }
+  /*----------TÍTULO------------*/
+  .acronimo>span{
+    font-size: 72px;
+    text-decoration: underline;
+    font-family: "Sansation";
+    color: rgb(0, 0, 0);
+  }
+  /*----------SIGNIFICADO------------*/
+  .meaning>span{
+    font-size: 24px;
+    font-family: "Orbitron";
+    color: rgb(0, 0, 0);
+  }
+  .meaning>span:hover{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+
+  }
+  /*----------NAV------------*/
+  .nav{
+    width: 94vw;
+    height: auto;
+    font-size: 48px;
+
+  }
+  .nav>nav{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #0088B3;
+  }
+  .nav>nav a{
+    width: 20%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-family: "Overlock-SC";
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
+  .nav>nav a:active{
+    color: rgb(255, 255, 255);
+  }
+  .cerrar{
+    position: absolute;
+    right: 60px;
+  }
+  .cerrar>img{
+    width: 200px;
+    height: auto;
+  }
+  .claro{
+    background-color: #00C3FF;
+  }
+  .copy{
+    text-align: right;
+  }
+  .descgame{
+    font-family: "Inconsolata";
+    font-size: 20px;
+  }
+  .juegotitulo{
+    font-family: "Chido";
+    font-size: 40px;
+  }
+  .title{
+    text-align: center;
+    width: 66vw;
+    height: auto;
+    padding: 2%;
+    background-color: #0088B3;
+  }
+  .aviso{
+    display: inherit;
+    background-color: rgba(54, 54, 54, 0.9);
+    margin-top: 25px;
+    margin-bottom: 50px;
+    width: auto;
+    height: auto;
+  }
+  .aviso>div img{
+    width: 500px;
+    transition: width 1.2s ease-in-out;
+  }
+  .scoresfield{
+    display: none;
+  }
+}
+/*-------------MEDIA QUERI PARA EL ANCHO INCORRECTO-------------*/
+@media screen and (max-width: 1800px) and (orientation: landscape){
+  body{
+    background-color: #B35900;
+  }
+  footer{
+    background-color: #FF8C19;
+    font-family: "Overpass";
+  }
+  header{
+    background-color: #FF8000;
+    position: relative;
+    top: 0%;
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
+  }
+  header>section{
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+  }
+  noscript>img{
+    width: 100vw;
+    height: auto;
+  }
+  /*----------TÍTULO------------*/
+  .acronimo>span{
+    font-size: 72px;
+    text-decoration: underline;
+    font-family: "Sansation";
+    color: rgb(0, 0, 0);
+  }
+  /*----------SIGNIFICADO------------*/
+  .meaning>span{
+    font-size: 24px;
+    font-family: "Orbitron";
+    color: rgb(0, 0, 0);
+  }
+  .meaning>span:hover{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+
+  }
+  /*----------NAV------------*/
+  .nav{
+    width: 94vw;
+    height: auto;
+    font-size: 48px;
+
+  }
+  .nav>nav{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #0088B3;
+  }
+  .nav>nav a{
+    width: 20%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-family: "Overlock-SC";
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
+  .nav>nav a:active{
+    color: rgb(255, 255, 255);
+  }
+  .cerrar{
+    position: absolute;
+    right: 60px;
+  }
+  .cerrar>img{
+    width: 200px;
+    height: auto;
+  }
+  .claro{
+    background-color: #00C3FF;
+  }
+  .copy{
+    text-align: right;
+  }
+  .descgame{
+    font-family: "Inconsolata";
+    font-size: 20px;
+  }
+  .juegotitulo{
+    font-family: "Chido";
+    font-size: 40px;
+  }
+  .title{
+    text-align: center;
+    width: 66vw;
+    height: auto;
+    padding: 2%;
+    background-color: #0088B3;
+  }
+  .aviso{
+    display: inherit;
+    background-color: rgba(54, 54, 54, 0.9);
+    margin-top: 25px;
+    margin-bottom: 50px;
+    width: auto;
+    height: auto;
+  }
+  .aviso>div img{
+    width: 1000px;
+    transition: width 1.2s ease-in-out;
+  }
+  .scoresfield{
+    display: none;
+  }
+}
+/*-------------MEDIA QUERI PARA EL ANCHO CORRECTO-------------*/
+@media screen and (min-width: 1801px) and (orientation: landscape) {
+  body{
+    background-color: #B35900;
+    display: flex;
+    flex-flow: column wrap;
+  }
+  footer{
+    background-color: #FF8C19;
+    font-family: "Overpass";
+  }
+  header{
+    background-color: #FF8000;
+    position: relative;
+    top: 0%;
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
+  }
+  header>section{
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+  }
+  noscript>img{
+    width: 100vw;
+    height: auto;
+  }
+  /*----------TÍTULO------------*/
+  .acronimo>span{
+    font-size: 72px;
+    text-decoration: underline;
+    font-family: "Sansation";
+    color: rgb(0, 0, 0);
+  }
+  /*----------SIGNIFICADO------------*/
+  .meaning>span{
+    font-size: 24px;
+    font-family: "Orbitron";
+    color: rgb(0, 0, 0);
+  }
+  .meaning>span:hover{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+
+  }
+  /*----------NAV------------*/
+  .nav{
+    width: 94vw;
+    height: auto;
+    font-size: 48px;
+  }
+  .nav>nav{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #0088B3;
+  }
+  .nav>nav a{
+    width: 20%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-family: "Overlock-SC";
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
+  .nav>nav a:active{
+    color: rgb(255, 255, 255);
+  }
+  .aviso{
+    display: none;
+  }
+  .cerrar{
+    position: absolute;
+    right: 60px;
+  }
+  .cerrar>img{
+    width: 200px;
+    height: auto;
+  }
+  .claro{
+    background-color: #00C3FF;
+  }
+  .copy{
+    text-align: right;
+  }
+  .descgame{
+    font-family: "Inconsolata";
+    font-size: 20px;
+  }
+  .juegotitulo{
+    font-family: "Chido";
+    font-size: 40px;
+  }
+  .scoresfield{
+    width: 96vw;
+    height: 94vh;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgb(75, 75, 75);
+    align-self: center;
+  }
+  .title{
+    text-align: center;
+    width: 66vw;
+    height: auto;
+    padding: 2%;
+    background-color: #0088B3;
+  }
+}
