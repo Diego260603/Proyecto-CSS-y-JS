@@ -344,10 +344,9 @@
   /*-----------CREDITOS------------*/
   .creditsfield{
     width: 96vw;
-    height: 94vh;
+    height: auto;
     margin-top: 50px;
     margin-bottom: 50px;
-    background-color: rgb(75, 75, 75);
     align-self: center;
   }
   /*-----------1EROS-------------*/
@@ -364,7 +363,7 @@
     margin: 50px;
   }
   .credits1>.foto1 img{
-    width: auto;
+    width: 800;
     height: 600px;
   }
   .credits1>.datos1{
@@ -375,7 +374,7 @@
     line-height: 1.0;
   }
   .credits1>.datos1 p{
-    font-size: 4em;
+    font-size: 2em;
     text-decoration: underline;
   }
   .credits1>.datos1 span .dato{
@@ -391,11 +390,11 @@
     text-decoration: underline;
   }
   .credits1>.datos1 .logros span{
-    font-size: 24px;
+    font-size: 18px;
     text-decoration: none;
   }
   .credits1>.datos1 .logros .important{
-    font-size: 38px;
+    font-size: 24px;
     text-decoration: underline;
   }
   /*-----------2NDOS-------------*/
@@ -424,7 +423,7 @@
     line-height: 1.0;
   }
   .credits2>.datos2 p{
-    font-size: 4em;
+    font-size: 2em;
     text-decoration: underline;
   }
   .credits2>.datos2 span .dato{
@@ -440,11 +439,11 @@
     text-decoration: underline;
   }
   .credits2>.datos2 .logros span{
-    font-size: 24px;
+    font-size: 18px;
     text-decoration: none;
   }
   .credits2>.datos2 .logros .important{
-    font-size: 38px;
+    font-size: 24px;
     text-decoration: underline;
   }
   /*-----------3ROS-------------*/
@@ -473,7 +472,7 @@
     line-height: 1.0;
   }
   .credits3>.datos3 p{
-    font-size: 4em;
+    font-size: 2em;
     text-decoration: underline;
   }
   .credits3>.datos3 span .dato{
@@ -489,11 +488,11 @@
     text-decoration: underline;
   }
   .credits3>.datos3 .logros span{
-    font-size: 24px;
+    font-size: 18px;
     text-decoration: none;
   }
   .credits3>.datos3 .logros .important{
-    font-size: 38px;
+    font-size: 24px;
     text-decoration: underline;
   }
   /*-----------4TOS-------------*/
@@ -522,7 +521,7 @@
     line-height: 1.0;
   }
   .credits4>.datos4 p{
-    font-size: 4em;
+    font-size: 2em;
     text-decoration: underline;
   }
   .credits4>.datos4 span .dato{
@@ -538,11 +537,11 @@
     text-decoration: underline;
   }
   .credits4>.datos4 .logros span{
-    font-size: 24px;
+    font-size: 18px;
     text-decoration: none;
   }
   .credits4>.datos4 .logros .important{
-    font-size: 38px;
+    font-size: 24px;
     text-decoration: underline;
   }
   /*-----------FIN DE LOS CRÉDITOS-----------*/
@@ -560,5 +559,22 @@
     height: auto;
     padding: 2%;
     background-color: #0088B3;
+  }
+  .titulo{
+    width: 96vw;
+    height: auto;
+    padding: 2%;
+    align-self: center;
+    background-color: #0088B3;
+    margin-top: 20px;
+  }
+  .titulo>h1{
+    font-family: "Overlock-SC";
+    font-size: 96px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    text-decoration: underline overline;
+    border-left: 8px solid black;
+    border-right: 8px solid black;
   }
 }
