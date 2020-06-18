@@ -1,11 +1,27 @@
 window.onload = function() {
   cvs = document.getElementById("canvas");
   ctx = cvs.getContext("2d");
-  setup();
-  setInterval(draw,1);
+  if (!co||!coo||!cook||!cookie) {
+    setup();
+    setInterval(draw,1);
+  }
+  else {
+    recuperar();
+    setInterval(redraw,1)
+  }
   document.addEventListener("keydown",game);
-
 }
+function getCookie(name){
+  var re = new RegExp(name + "=([^;]+)");
+  var value = re.exec(document.cookie);
+  return (value != null) ? unescape(value[1]) : false;
+}
+var c = getCookie("nivel");
+var co = getCookie("tablero");
+var coo = getCookie("pos");
+var cook = getCookie("movimientos");
+var cooki = getCookie("puntaje");
+var cookie = getCookie("met");
 
 function line(x,y,a,b) {
   ctx.beginPath();
@@ -18,17 +34,44 @@ function random(min,max){
   return Math.round(Math.random()*(max-min)+min);
 }
 
-let cols, filas, before,esq1,esq2,xesq,yesq;
-let w = 25;
+let cols, filas, before,esq1,esq2,xesq,yesq,met,current,nivel,w, puntos, puntaje;
 let tablero = [];
-let current;
 let stack = [];
+var timer = 0;
+
+
+if (c) {
+  nivel = c;
+  setTimeout(()=>{
+    document.cookie = "nivel=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+    document.cookie = "puntaje=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  },1000)
+  switch(parseInt(nivel)){
+    case 1: w = 200;break;
+    case 2: w = 160;break;
+    case 3: w = 100;break;
+    case 4: w = 80;break;
+    case 5: w = 50;break;
+    case 6: w = 40;break;
+    case 7: w = 32;break;
+    case 8: w = 25;break;
+    case 9: w = 20;break;
+  }
+  var movimientos = cook;
+  puntaje = parseInt(cooki);
+}
+else {
+  puntaje = 0;
+  w = 200;
+  var movimientos = 0;
+  nivel = 1;
+}
+
 
 
 function setup() {
   cols = Math.floor(cvs.width / w);
   filas = Math.floor(cvs.height / w);
-
   for (let j = 0; j < filas; j++) {
     for (let i = 0; i < cols; i++) {
       var celda = new Celda(i, j);
@@ -36,33 +79,42 @@ function setup() {
     }
   }
   //1 - Elige la celda inicial, la marca como visitada y hace push en el stack
-  current = tablero[0];
+  var inicio = tablero[index((cols/2)-1,(filas/2)-1)];
+  current = inicio;
   current.pan = true;
   stack.push(current);
 
-  var met = random(1,3);
+  met = random(1,4);
+  determineMet(met);
+}
+
+function determineMet(met){
   if (met === 1) {
+    esq1 = 0;
+    esq2 = 0;
+    xesq = 0;
+    yesq = 0;
+  }
+  if (met === 2) {
     esq1 = cols-1;
     esq2 = 0;
     xesq = cvs.width - w;
     yesq = 0;
   }
-  if (met === 2) {
+  if (met === 3) {
     esq1 = 0;
     esq2 = filas-1;
     xesq = 0;
     yesq = cvs.height - w;
   }
-  if (met === 3) {
+  if (met === 4) {
     esq1 = cols-1;
     esq2 = filas-1;
     xesq = cvs.width - w;
     yesq = cvs.height - w;
   }
 }
-
 function draw(){
-
   for (let i = 0; i < tablero.length; i++) {
     tablero[i].zeigen();
   }
@@ -90,7 +142,6 @@ function draw(){
       current = vecinillo;
     }
   }
-
   ctx.fillStyle="#3CB47C";
   ctx.fillRect(xesq,yesq,w,w);
 }
@@ -159,7 +210,9 @@ function Celda(i, j) {
     let x = this.i * w;
     let y = this.j * w;
     ctx.fillStyle="#2F1E2E";
-    ctx.fillRect(x,y,w,w);
+    ctx.fillRect(x+3,y+3,w-6,w-6);
+    ctx.strokeStyle = "#FFFFFF";
+    ctx.lineWidth = 2;
   };
 
   this.zeigen = function() {
@@ -185,52 +238,249 @@ function Celda(i, j) {
   };
 }
 
-//-------------------------------------
+function recuperar(){
+  var ctablero = co;
+  var pos = coo.split(",");
+  var movimientos = cook;
+  //var niveles = cooki;
+  //var puntaje = cookie;
+  var met = cookie;
 
 
-function game(evt) {
-  let speedX, speedY, next;
-  if (!current) {
-    let current = tablero[0];
+
+  var tablero2 = ctablero.split(",");
+  cols = Math.floor(cvs.width / w);
+  filas = Math.floor(cvs.height / w);
+
+  for (var j = 0; j < filas; j++) {
+    for (var i = 0; i < cols; i++) {
+      var celda = new CeldaN(i,j,tablero2);
+      tablero.push(celda);
+    }
   }
+  current = tablero[parseInt(pos[0])+parseInt(pos[1])*cols];
 
-  var meta = tablero[index(esq1,esq2)];
+  determineMet(parseInt(met));
+}
 
-  //console.log(current);
-  if (before && !current) {
-    current = before;
+function redraw(){
+  if (checkGen()) {
+    parseInt(timer) += 1;
   }
-  switch(evt.keyCode) {
-    case 38:
-    if (!current.pared[0]) {
-      next = tablero[index(current.i,current.j-1)];
-      speedY -= 1;
-    }
-    break;
-    case 39:
-    if (!current.pared[1]) {
-      next = tablero[index(current.i+1,current.j)];
-      speedX += 1;
-    }
-    break;
-    case 40:
-    if (!current.pared[2]) {
-      next = tablero[index(current.i,current.j+1)];
-      speedY += 1;
-    }
-    break;
-    case 37:
-    if (!current.pared[3]) {
-      next = tablero[index(current.i-1,current.j)];
-      speedX -= 1;
-    }
-    break;
+  for (let i = 0; i < tablero.length; i++) {
+    tablero[i].zeigen();
   }
-  before = current;
-  current = next;
-  if (current && current.i == meta.i && current.j == meta.j) {
-    setTimeout(()=>{
-      alert("Ganaste");
-    },100);
+  if (current) {
+    current.highlight();
+  }
+  else if (before){
+    before.highlight();
+  }
+  ctx.fillStyle="#3CB47C";
+  ctx.fillRect(xesq,yesq,w,w);
+}
+function CeldaN(i,j,tab) {
+  this.i = i;
+  this.j = j;
+  let x = this.i * w;
+  let y = this.j * w;
+  this.pan = true;
+
+  switch(parseInt(tab[index(i,j)])){
+    case 0: this.pared = [false, false, false, false];break;
+    case 1: this.pared = [true, false, false, false];break;
+    case 2: this.pared = [false, true, false, false];break;
+    case 3: this.pared = [false, false, true, false];break;
+    case 4: this.pared = [false, false, false, true];break;
+    case 5: this.pared = [true, true, false, false];break;
+    case 6: this.pared = [true, false, true, false];break;
+    case 7: this.pared = [true, false, false, true];break;
+    case 8: this.pared = [false, true, true, false];break;
+    case 9: this.pared = [false, true, false, true];break;
+    case 10: this.pared = [false, false, true, true];break;
+    case 11: this.pared = [true, true, true, false];break;
+    case 12: this.pared = [false, true, true, true];break;
+    case 13: this.pared = [true, false, true, true];break;
+    case 14: this.pared = [true, true, false, true];break;
+  }
+  this.highlight = function() {
+    ctx.fillStyle="#2F1E2E";
+    ctx.fillRect(x+3,y+3,w-6,w-6);
+    ctx.strokeStyle = "#FFFFFF";
+    ctx.lineWidth = 2;
+  }
+  this.zeigen = function() {
+    if (this.pared[0]) {
+      line(x, y, x + w, y);
+    }
+    if (this.pared[1]) {
+      line(x + w, y, x + w, y + w);
+    }
+    if (this.pared[2]) {
+      line(x + w, y + w, x, y + w);
+    }
+    if (this.pared[3]) {
+      line(x, y + w, x, y);
+    }
+    if(this.pan) {
+      ctx.fillStyle="#69CCEF";
+      ctx.fillRect(x,y,w,w);
+    }
   }
 }
+
+//---------------Juego------------------
+
+var on = true;
+
+function game(evt) {
+  if (on) {
+    var crono = setInterval(()=>{
+      timer++;
+    },100);
+    if (checkGen()) {
+      let speedX, speedY, next;
+      if (!current) {
+        let current = tablero[index((cols/2)-1,(filas/2)-1)];
+      }
+
+      var meta = tablero[index(esq1,esq2)];
+      if (before && !current) {
+        movimientos--;
+        current = before;
+      }
+      switch(evt.keyCode) {
+        case 38:
+        if (!current.pared[0]) {
+          next = tablero[index(current.i,current.j-1)];
+          speedY -= 1;
+        }
+        break;
+        case 39:
+        if (!current.pared[1]) {
+          next = tablero[index(current.i+1,current.j)];
+          speedX += 1;
+        }
+        break;
+        case 40:
+        if (!current.pared[2]) {
+          next = tablero[index(current.i,current.j+1)];
+          speedY += 1;
+        }
+        break;
+        case 37:
+        if (!current.pared[3]) {
+          next = tablero[index(current.i-1,current.j)];
+          speedX -= 1;
+        }
+        break;
+      }
+      movimientos++;
+      document.getElementById("moves").innerHTML = "<p>Movimientos: "+movimientos+"</p>";
+      before = current;
+      current = next;
+      if (current && current.i == meta.i && current.j == meta.j) {
+        on = false;
+        clearInterval(crono);
+        if (timer <= 1500 * nivel) {
+          puntos = Math.round(1500 - (parseInt(timer)/parseInt(nivel)));
+        }
+        else {
+          puntos = 0;
+        }
+
+        puntaje += parseInt(puntos);
+        nivel++;
+        setTimeout(()=>{
+          alert("Ganaste. Has hecho "+movimientos+" movimientos y tu puntaje es de " + puntaje+".");
+          document.cookie = "nivel="+ nivel;
+          document.cookie = "puntaje="+ puntaje;
+        },100);
+      }
+    }
+    else {
+      alert("Por favor espera a que se termine de generar el tablero");
+    }
+  }
+}
+
+
+//---------Guardado---------
+function checkGen(){
+  var generando = 0;
+  for (var i = 0; i < tablero.length; i++) {
+    if(!tablero[i].pan){
+      generando++;
+    }
+  }
+  if (generando < 1) {
+    return true;
+  }else {
+    return false;
+  }
+}
+
+$("#save").click(function(evt){
+  if (checkGen()) {
+    let ctablero = [];
+    let pos = [];
+    for (var i = 0; i < tablero.length; i++) {
+      switch(tablero[i].pared.join(" ")){
+        case 'false false false false': ctablero.push(0);break;
+        case 'true false false false': ctablero.push(1);break;
+        case 'false true false false': ctablero.push(2);break;
+        case 'false false true false': ctablero.push(3);break;
+        case 'false false false true': ctablero.push(4);break;
+        case 'true true false false': ctablero.push(5);break;
+        case 'true false true false': ctablero.push(6);break;
+        case 'true false false true': ctablero.push(7);break;
+        case 'false true true false': ctablero.push(8);break;
+        case 'false true false true': ctablero.push(9);break;
+        case 'false false true true': ctablero.push(10);break;
+        case 'true true true false': ctablero.push(11);break;
+        case 'false true true true': ctablero.push(12);break;
+        case 'true false true true': ctablero.push(13);break;
+        case 'true true false true': ctablero.push(14);break;
+      }
+    }
+    pos.push(current.i);
+    pos.push(current.j);
+    document.cookie = "nivel="+nivel;
+    document.cookie = "tablero="+ctablero;
+    document.cookie = "pos="+pos;
+    document.cookie = "movimientos="+movimientos;
+    document.cookie = "puntaje="+puntaje;
+    document.cookie = "met="+met;
+  }
+  else {
+    alert("Por favor, espera a que se haya generado el tablero")
+  }
+})
+
+// function highScore(newhigh){
+//   var high = getCookie("high");
+//   if (high){
+//     if (high < newhigh) {
+//       document.cookie = "high="+newhigh";expires=Thu, 04 Jun 2021 00:00:00 GMT";
+//     }
+//   }
+// }
+
+function deleteMostCookies() {
+  document.cookie = "nivel=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "tablero=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "pos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "movimientos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "puntaje=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "met=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  window.location.reload();
+}
+
+$("#reset").click(function(evt){
+  deleteMostCookies();
+})
+
+$("#rend").click(function(evt){
+  deleteMostCookies();
+  document.cookie = "high=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+})
