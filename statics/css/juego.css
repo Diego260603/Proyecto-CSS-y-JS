@@ -377,6 +377,13 @@
     background-color: rgb(75, 75, 75);
     align-self: center;
   }
+  .title{
+    text-align: center;
+    width: 66vw;
+    height: auto;
+    padding: 2%;
+    background-color: #0088B3;
+  }
   .titulo{
     width: 96vw;
     height: auto;
