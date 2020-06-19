@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 
-  //los tetronimios
+  //los tetronimios (aqui se forman las figuras o tetrominios)
   const lTetromino = [
     [1, width+1, width*2+1, 2],
     [width, width+1, width+2, width*2+2],
@@ -55,13 +55,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
   //selector aleatorio xd
-  let random = Math.floor(Math.random()*theTetrominoes.length)
+  let random = Math.floor(Math.random()*theTetrominoes.length) // con esta variable escoge  aleatoriamente el tetrominio
   let currentRotation = 0
   let current = theTetrominoes[random][currentRotation]
 
 
   //poner funciones las teclas
-  function control(e) {
+  function control(e) { // esta duncion detecta la tecla que tocas y dependiendo de eso realiza una accion
     if(e.keyCode === 68) {
       moveRight()
     } else if (e.keyCode ===87) {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
   // dibujar las formas
-  function draw() {
+  function draw() { //con esta funcion se dibujan las formas lo cual es de manera curiosa jajaj pues en lugar de dibujarlas colmo tal en el fondo tiene algo otro color y solo se borra lo de arriba y deja ver el fondo lo cual es la figura
     current.forEach( index => (
       squares[currentPosition + index].classList.add('block')
     ))
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }
 
 
-  // mover hacia abajo las formas
+  // mover hacia abajo las formas con esta funcion las formas o tetrominios avanzan hacia abajo
   function moveDown() {
     undraw()
     currentPosition = currentPosition += width
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     freeze()
   }
 
-  //mover hacia la izquierda la figura y evitar la colision
+  //Mover hacia la izquierda la figura y evitar la colision, con estas dos funciones realiza el movimiento de izaquierda a derecha y evita que se genere un efecto pacman
   function moveRight() {
     undraw()
     const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
