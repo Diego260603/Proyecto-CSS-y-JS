@@ -1,3 +1,22 @@
+@keyframes fade {
+  0%{
+    background-color: rgba(0, 0, 0, 0);
+  }
+  80%{
+    background-color: rgba(0, 0, 0, 1);
+  }
+  100%{
+    background-color: rgba(0, 0, 0, 1);
+  }
+}
+@keyframes fade2 {
+  0%{
+    background-color: rgba(0, 0, 0, 1);
+  }
+  100%{
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
 @keyframes float {
   0% {
     background-position: 0 0;
@@ -18,13 +37,18 @@
   align-items: center;
   display:flex;
 }
+button{
+  height: 50px;
+  width: 100px;
+}
 h1{
   color: white;
   font-family: Impact, Charcoal, sans-serif;
   font-size: 100px;
 }
 canvas{
-  background-color: #FFCA28;
+  background-image:url("../media/fondo.jpg");
+  background-size: cover;
 }
 body{
   display:flex;
@@ -32,7 +56,56 @@ body{
   justify-content: center;
   flex-direction: column;
 }
-
+.end,.endsad{
+  align-items: center;
+  background-size: 1600px 800px;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  justify-content: center;
+  width: 1600px;
+}
+.end{
+  background-image: url("../media/doggo.jpg");
+}
+.ventana{
+  animation: fade2 1s ease-out 1;
+  background-color: rgba(0, 0, 0, 0);
+  height:800px;
+  width:1600px;
+  position: absolute;
+  top: 1px;
+}
+.endsad{
+  background-image: url("../media/sad.jpg");
+}
+.resu{
+  font-size: 80px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+.resul{
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+}
+.resul div{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 20%;
+}
+.abc{
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
+  margin: -5% 40%;
+}
+.given{
+  color: crimson;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
+}
 .alles{
   align-items: flex-end;
   background-image: url("../media/ruin.jpg");
@@ -96,6 +169,9 @@ body{
   color: white;
   cursor: pointer;
   background-size: 400% 100%;
+}
+#titel{
+  font-size: 80px;
 }
 #oldGame,#newGame,#noGame{
   background-size: 400px 75px;

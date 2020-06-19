@@ -44,20 +44,6 @@ $(document).ready(function() {
     })
 
 
-    function deleteMostCookies() {
-      document.cookie = "nivel=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-      document.cookie = "tablero=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-      document.cookie = "pos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-      document.cookie = "movimientos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-      document.cookie = "puntaje=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-      document.cookie = "met=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-    }
-
-    $("#reset").click(()=>{
-      deleteMostCookies();
-      document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-      window.location.reload();
-    })
 
     var usuario = "Abraham";
     var d = new Date();
@@ -66,7 +52,7 @@ $(document).ready(function() {
         deleteMostCookies();
         highScores("LA",makeHigh(puntaje,usuario,d));
         document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-        window.location.reload();
+        ende();
       }
       else {
         alert("Por favor, espera a que se haya generado el tablero")
@@ -76,14 +62,28 @@ $(document).ready(function() {
       dirigir();
     });
   } else {
-    alert("Escapaste")
+    ende();
   }
+  $("#reset").click(()=>{
+    deleteMostCookies();
+    document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+    window.location.reload();
+  })
 });
 
 function getCookie(name){
   var re = new RegExp(name + "=([^;]+)");
   var value = re.exec(document.cookie);
   return (value != null) ? unescape(value[1]) : false;
+}
+
+function deleteMostCookies() {
+  document.cookie = "nivel=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "tablero=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "pos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "movimientos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "puntaje=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+  document.cookie = "met=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
 }
 
 var pantallaA = "<div class='alles'>"+
@@ -93,30 +93,63 @@ var pantallaA = "<div class='alles'>"+
 var botonNoCookies = "<button type='button' id='noGame'>Reanudar Juego</button>";
 var botonCookies = "<button type='button' id='oldGame'>Reanudar Juego</button>";
 var pantallaB = "</div></div>";
+
+
 function dirigir(){
   $("body").html("<canvas id='canvas' width='1600' height='800'></canvas>"+
     "<div id='moves'>"+
       "<p>Movimientos: 0</p>"+
     "</div>"+
     "<div id='imagen'></div>"+
+    "<div class='ventana'></div>"+
     "<button type='button' id='save'>Guardar</button>"+
     "<button type='button' id='reset'>Reiniciar juego</button>"+
     "<button type='button' id='rend'>Rendirse</button>"
   );
   cvs = document.getElementById("canvas");
   ctx = cvs.getContext("2d");
-  if (!co||!coo||!cook||!cookie) {
-    setup();
-    setInterval(draw,1);
-  }
-  else {
-    recuperar();
-    setInterval(redraw,1)
-  }
+  setTimeout(()=>{
+    if (!co||!coo||!cook||!cookie) {
+      setup();
+      setInterval(draw,1);
+    }
+    else {
+      recuperar();
+      setInterval(redraw,1)
+    }
+  },1000);
   document.addEventListener("keydown",game);
 }
 
-
+function ende(){
+  var rendido = "Te perdiste en el nivel "+nivel+" y tu perrito <br>nunca supo por que no regresaste";
+  var ganado = "¡Regresaste a las patitas de tu perrito!"
+  var feliz = "<div class='end'>"
+  var sad = "<div class='endsad'>"
+  var pantallaEndA = "<div class='resu'><h1 id='titel' align='center'>";
+  var pantallaEndB = "</h1></div>"+
+    "<div class='resul'>"+
+      "<div class='thescore'>"+
+        "<h2 class='given'>Puntaje: </h2>"+
+        "<p class='abc'>"+puntaje+"</p>"+
+      "</div>"+
+      "<div class='themoves'>"+
+        "<h2 class='given'>Movimientos: </h2>"+
+        "<p class='abc'>"+parseInt(cook)+"</p>"+
+      "</div>"+
+    "</div>"+
+    "<button type='button' id='reset'>Volver a la página de inicio</button>"+
+  "</div>";
+  if (c==10) {
+    pantallaEndA = feliz + pantallaEndA;
+    pantallaEndA += ganado;
+  }else{
+    pantallaEndA = sad + pantallaEndA;
+    pantallaEndA += rendido;
+  }
+  pantallaEndA += pantallaEndB;
+  $("body").html(pantallaEndA);
+}
 
 function pantallaInicio() {
   if (!co||!coo||!cook||!cookie) {
@@ -209,8 +242,14 @@ function reply_click(clicked_id){
 
 var figur = getCookie("personaje");
 if (figur) {
-  $("body").html("<img id='charac' width='100' height='100' style='background-color:crimson;' src='../../statics/media/personajes/"+figur+".png'>")
+  $("body").html(
+  "<img id='charac' width='100' height='100' src='../../statics/media/personajes/"+figur+".png'>"+
+  "<img id='door' width='0' height='0' src='../../statics/media/door.jpg'>"+
+  "<img id='tile' width='0' height='0' src='../../statics/media/tile.jpg'>"
+  )
   var personaje = document.getElementById("charac");
+  var door = document.getElementById("door");
+  var tile = document.getElementById("tile");
 }
 
 
@@ -233,7 +272,7 @@ function random(min,max){
   return Math.round(Math.random()*(max-min)+min);
 }
 
-let cols, filas, before,esq1,esq2,xesq,yesq,met,current,nivel,w, puntos, puntaje;
+let cols, filas, before,esq1,esq2,xesq,yesq,met,current,nivel,w, puntos, puntaje, movimientos;
 let tablero = [];
 let stack = [];
 var timer = 0;
@@ -241,6 +280,7 @@ var timer = 0;
 if (c) {
   nivel = c;
   setTimeout(()=>{
+    document.cookie = "movimientos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
     document.cookie = "nivel=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
     document.cookie = "puntaje=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
     document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
@@ -257,13 +297,13 @@ if (c) {
     case 9: w = 20;break;
     default: w = "Ganaste";break;
   }
-  var movimientos = cook;
+  movimientos = cook;
   puntaje = parseInt(cooki);
 }
 else {
   puntaje = 0;
   w = 200;
-  var movimientos = 0;
+  movimientos = 0;
   nivel = 1;
 }
 
@@ -341,8 +381,7 @@ function draw(){
       current = vecinillo;
     }
   }
-  ctx.fillStyle="#3CB47C";
-  ctx.fillRect(xesq,yesq,w,w);
+  ctx.drawImage(door,xesq,yesq,w,w);
 }
 
 function index(i, j) {
@@ -410,7 +449,7 @@ function Celda(i, j) {
     let y = this.j * w;
     ctx.drawImage(personaje,x,y,w,w)
     ctx.strokeStyle = "#FFFFFF";
-    ctx.lineWidth = 10;
+    ctx.lineWidth = 7;
   };
 
   this.zeigen = function() {
@@ -430,8 +469,7 @@ function Celda(i, j) {
     }
 
     if (this.pan) {
-      ctx.fillStyle="#69CCEF";
-      ctx.fillRect(x,y,w,w);
+      ctx.drawImage(tile,x,y,w,w);
     }
   };
 }
@@ -470,8 +508,7 @@ function redraw(){
   else if (before){
     before.highlight();
   }
-  ctx.fillStyle="#3CB47C";
-  ctx.fillRect(xesq,yesq,w,w);
+  ctx.drawImage(door,xesq,yesq,w,w);
 }
 function CeldaN(i,j,tab) {
   this.i = i;
@@ -500,7 +537,7 @@ function CeldaN(i,j,tab) {
   this.highlight = function() {
     ctx.drawImage(personaje,x,y,w,w)
     ctx.strokeStyle = "#FFFFFF";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 7;
   }
   this.zeigen = function() {
     if (this.pared[0]) {
@@ -516,8 +553,7 @@ function CeldaN(i,j,tab) {
       line(x, y + w, x, y);
     }
     if(this.pan) {
-      ctx.fillStyle="#69CCEF";
-      ctx.fillRect(x,y,w,w);
+      ctx.drawImage(tile,x,y,w,w);
     }
   }
 }
@@ -584,20 +620,20 @@ function game(evt) {
 
         puntaje += parseInt(puntos);
         nivel++;
+
         setTimeout(()=>{
-          alert("Ganaste. Has hecho "+movimientos+" movimientos y tu puntaje es de " + puntaje+".");
           document.cookie = "nivel="+ nivel;
           document.cookie = "puntaje="+ puntaje;
-          var sig = confirm("¿Siguiente?Esto borrara tus archivos guardados pasados");
-          if (sig) {
-            $.cookie("estado","xd");
-            document.cookie = "tablero=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-            document.cookie = "pos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-            document.cookie = "movimientos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-            document.cookie = "met=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-            window.location.reload();
+          document.cookie = "movimientos="+ movimientos;
+          $.cookie("estado","xd");
+          document.cookie = "tablero=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+          document.cookie = "pos=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+          document.cookie = "met=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+          $(".ventana").css("animation","fade 1s ease-out 1")
+          setTimeout(()=>{
             dirigir();
-          }
+            window.location.reload();
+          },900)
         },100);
       }
     }
