@@ -5,7 +5,7 @@ function crearCookie(){
   document.cookie = "color_favorito=amarillo";
 
 }*/
-document.cookie = “miCookie=Soy la cookie”;
+//document.cookie = “miCookie=Soy la cookie”;
 //document.cookie = "nombre="cookievalue + "; expires=" + expiresdate.toUTCString();
 
 
@@ -22,3 +22,24 @@ function guardar(){
   guardarCookie(tuCookie,tuValor,caduca)
 }
 		*/
+
+document.cookie="LAhighscores=[]";
+document.cookie="TEhighscores=[]";
+document.cookie="SIhighscores=[]";   //$.cookie("usuario",document.getElementById("name-user-RG").value);    PARA EL USUARIO REGISTRADO
+
+$.cookie("usuario",document.getElementById("name-user").value);
+$.cookie("contrasenia",document.getElementById("password-user").value);
+$.cookie("usuario");
+$.cookie("contrasenia");
+
+var cookieusuario = $.cookie("usuario");
+var cookiecontrasenia = $.cookie("contrasenia");
+
+console.log($.cookie("LAhighscores"));
+console.log($.cookie("TEhighscores"));
+console.log($.cookie("SIhighscores"))
+console.log(cookieusuario);
+/*var a = $.cookie("LAhighscores")
+var b = $.cookie("TEhighscores")
+var c = $.cookie("SIhighscores")*/
+//(parse)

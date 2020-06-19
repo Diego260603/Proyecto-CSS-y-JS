@@ -134,7 +134,7 @@
     width: 500px;
     transition: width 1.2s ease-in-out;
   }
-  .gamefield{
+  .slider{
     display: none;
   }
 }
@@ -240,16 +240,16 @@
   .aviso{
     display: inherit;
     background-color: rgba(54, 54, 54, 0.9);
-    margin-top: 25px;
-    margin-bottom: 50px;
     width: auto;
     height: auto;
   }
   .aviso>div img{
+    margin-top: 25px;
+    margin-bottom: 50px;
     width: 1000px;
     transition: width 1.2s ease-in-out;
   }
-  .gamefield{
+  .slider{
     display: none;
   }
 }
@@ -257,8 +257,6 @@
 @media screen and (min-width: 1801px) and (orientation: landscape) {
   body{
     background-color: #009E96;
-    display: flex;
-    flex-flow: column wrap;
   }
   footer{
     background-color: #08A673;
@@ -303,6 +301,7 @@
     width: 94vw;
     height: auto;
     font-size: 48px;
+
   }
   .nav>nav{
     width: 100%;
@@ -343,20 +342,21 @@
   }
   .descgame{
     font-family: "Inconsolata";
-    font-size: 24px;
-    margin: 5%;
+    font-size: 20px;
   }
   .juegotitulo{
     font-family: "Chido";
     font-size: 40px;
   }
-  .gamefield{
-    width: 96vw;
-    height: 94vh;
-    margin-top: 50px;
+  .slider{
+    margin-top: 25px;
     margin-bottom: 50px;
-    background-color: rgb(75, 75, 75);
-    align-self: center;
+    z-index: 90;
+    opacity: 0;
+    animation-name: aparece;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
   }
   .title{
     text-align: center;
@@ -364,5 +364,35 @@
     height: auto;
     padding: 2%;
     background-color: #08A61C;
+  }
+  .tituloModal{
+    text-align: center;
+    font-size: 64px;
+  }
+  .modal-body>p{
+    text-align: left;
+    font-size: 24px;
+  }
+  .MODAL{
+    width: 15%;
+    position: absolute;
+    left: 2%;
+    margin-top: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .MODAL>button{
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-left: -10px;
+  }
+  @keyframes aparece {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
   }
 }

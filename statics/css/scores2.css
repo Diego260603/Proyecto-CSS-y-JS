@@ -134,7 +134,7 @@
     width: 500px;
     transition: width 1.2s ease-in-out;
   }
-  .gamefield{
+  .scoresfield{
     display: none;
   }
 }
@@ -249,7 +249,7 @@
     width: 1000px;
     transition: width 1.2s ease-in-out;
   }
-  .gamefield{
+  .scoresfield{
     display: none;
   }
 }
@@ -343,14 +343,13 @@
   }
   .descgame{
     font-family: "Inconsolata";
-    font-size: 24px;
-    margin: 5%;
+    font-size: 20px;
   }
   .juegotitulo{
     font-family: "Chido";
     font-size: 40px;
   }
-  .gamefield{
+  .scoresfield{
     width: 96vw;
     height: 94vh;
     margin-top: 50px;
@@ -364,5 +363,22 @@
     height: auto;
     padding: 2%;
     background-color: #08A61C;
+  }
+  .titulo{
+    width: 96vw;
+    height: auto;
+    padding: 2%;
+    align-self: center;
+    background-color: #08A61C;
+    margin-top: 20px;
+  }
+  .titulo>h1{
+    font-family: "Overlock-SC";
+    font-size: 96px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    text-decoration: underline overline;
+    border-left: 8px solid black;
+    border-right: 8px solid black;
   }
 }

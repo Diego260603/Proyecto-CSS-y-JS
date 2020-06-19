@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../statics/css/juego.css">
+    <link rel="stylesheet" href="../../statics/css/juego2.css">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" media="only screen and only (orientation: landscape))">
     <title>E.M.J.S.C.S.S.B.A.  |  Tetris</title>
   </head>
@@ -48,7 +48,7 @@
     </div>
     <section class="gamefield">
       <div class="juego">
-        <audio src="../../statics/audio/TraPosa.wav" autoplay>
+        <audio src="../../statics/audio/TraPosa.wav" autoplay loop>
 
         </audio>
         <!--<script src="../../dynamics/js/tetris.js" charset="utf-8"></script>  -->
@@ -56,7 +56,7 @@
         <input type="button" value="Reiniciar juego" onclick="location.reload()"/>
         <button class="boton">Iniciar/Pausar</button> <br>
         Proxima figura:
-        <div class="previous-shape"> <!-- En estos divs se muestra la proxima figura que saldra -->
+        <div class="previous-shape">
           <div class="previous-grid">
             <div></div>
             <div></div>
@@ -77,7 +77,7 @@
           </div>
         </div>
     <br>
-        <div class="game"align="center" > <!-- en estos divs se genera el tablero del juegooo -->
+        <div class="game"align="center" >
           <div class="grid" align="center">
             <div ></div>
             <div></div>
@@ -279,7 +279,7 @@
             <div></div>
             <div></div>
             <div></div>
-            <div class="block3">F</div> <!-- Estos div sirven para de limitar el borde de hasta abajo, tienen la c lase block3 pq en el css se cambian de color -->
+            <div class="block3">F</div>
             <div class="block3">I</div>
             <div class="block3">N</div>
             <div class="block3">-</div>
@@ -291,7 +291,7 @@
             <div class="block3">N</div>
           </div>
         </div>
-        Tu puntaje es: <!-- estas lineas son las que marcan los puntos, en js tienen una funcion que se incrementa dependiendo los puntos que logren -->
+        Tu puntaje es:
         <h1 class="score-display">0</h1> Las lineas que llevas son:
         <h1 class="lines-display">0</h1>
         <script src="../../dynamics/js/tetris.js" charset="utf-8"></script>
@@ -307,9 +307,12 @@
       <p>Este juego esta basado en el original juego de tetris creado en 1984 por Alekséi Pázhitnov, el juego consiste en acomodar las figuras(Tetrominios)
       que van cayendo y forman una planicie, cuando se forma una planicie se liminan todos los bloques de esa linea, en esta version el juego es infinito
       no hay un alfa ni un omega, todo se repite en un ciclo, la unica opcion de salir de ese ciclo es perdiendo, Suerte :)</p>
+<<<<<<< HEAD
       <h3>Instrucciones</h3>
       <p>El juego funciona usando las teclas WASD, donde, W: sirve para rotar la figura, A: para mover la figura a la derecha, S: para moverla hacia abajo, y D: moverla a la derecha</p>
       <p>Si quieres jugar en pantalla completa click </p> <a href="tetris.html">aqui</a>
+=======
+>>>>>>> ad0a8820956ba473b15117b8b626d127581fb7dc
     </section>
     <script type="text/javascript" src="../../dynamics/js/pagPrin.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -323,13 +326,13 @@
             Tiene nuestra preferencia<br>
             B)
       </span>
-
+      <div class="copy">
         <p>Copyright © 2010 by E.M.J.S.C.S.S.B.A.</p>
         <span>All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying,
           recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied
           in critical reviews and certain other noncommercial uses permitted by copyright law. For permission requests, write to the publisher, addressed
            “Attention: Permissions Coordinator,” at the address below.</span>
-
+      </div>
     </footer>
   </body>
 </html>
