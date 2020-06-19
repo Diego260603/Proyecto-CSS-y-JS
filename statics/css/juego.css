@@ -377,6 +377,11 @@
     background-color: rgb(75, 75, 75);
     align-self: center;
   }
+  .juego{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
   .title{
     text-align: center;
     width: 66vw;

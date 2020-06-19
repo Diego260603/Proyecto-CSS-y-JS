@@ -6,64 +6,56 @@ $(document).ready(function() {
     }else{
       pantallaInicio();
     }
-    $("#save").click(function(evt){
-      if (checkGen()) {
-        let ctablero = [];
-        let pos = [];
-        for (var i = 0; i < tablero.length; i++) {
-          switch(tablero[i].pared.join(" ")){
-            case 'false false false false': ctablero.push(0);break;
-            case 'true false false false': ctablero.push(1);break;
-            case 'false true false false': ctablero.push(2);break;
-            case 'false false true false': ctablero.push(3);break;
-            case 'false false false true': ctablero.push(4);break;
-            case 'true true false false': ctablero.push(5);break;
-            case 'true false true false': ctablero.push(6);break;
-            case 'true false false true': ctablero.push(7);break;
-            case 'false true true false': ctablero.push(8);break;
-            case 'false true false true': ctablero.push(9);break;
-            case 'false false true true': ctablero.push(10);break;
-            case 'true true true false': ctablero.push(11);break;
-            case 'false true true true': ctablero.push(12);break;
-            case 'true false true true': ctablero.push(13);break;
-            case 'true true false true': ctablero.push(14);break;
-          }
-        }
-        pos.push(current.i);
-        pos.push(current.j);
-        document.cookie = "nivel="+nivel;
-        document.cookie = "tablero="+ctablero;
-        document.cookie = "pos="+pos;
-        document.cookie = "movimientos="+movimientos;
-        document.cookie = "puntaje="+puntaje;
-        document.cookie = "met="+met;
-      }
-      else {
-        alert("Por favor, espera a que se haya generado el tablero")
-      }
-    })
-
-
-
-    var usuario = "Abraham";
-    var d = new Date();
-    $("#rend").click(()=>{
-      if (checkGen) {
-        deleteMostCookies();
-        highScores("LA",makeHigh(puntaje,usuario,d));
-        document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-        ende();
-      }
-      else {
-        alert("Por favor, espera a que se haya generado el tablero")
-      }
-    })
-    $("#oldGame").click(()=>{
-      dirigir();
-    });
   } else {
     ende();
   }
+  $("#save").click(function(evt){
+    if (checkGen()) {
+      document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+      let ctablero = [];
+      let pos = [];
+      for (var i = 0; i < tablero.length; i++) {
+        switch(tablero[i].pared.join(" ")){
+          case 'false false false false': ctablero.push(0);break;
+          case 'true false false false': ctablero.push(1);break;
+          case 'false true false false': ctablero.push(2);break;
+          case 'false false true false': ctablero.push(3);break;
+          case 'false false false true': ctablero.push(4);break;
+          case 'true true false false': ctablero.push(5);break;
+          case 'true false true false': ctablero.push(6);break;
+          case 'true false false true': ctablero.push(7);break;
+          case 'false true true false': ctablero.push(8);break;
+          case 'false true false true': ctablero.push(9);break;
+          case 'false false true true': ctablero.push(10);break;
+          case 'true true true false': ctablero.push(11);break;
+          case 'false true true true': ctablero.push(12);break;
+          case 'true false true true': ctablero.push(13);break;
+          case 'true true false true': ctablero.push(14);break;
+        }
+      }
+      pos.push(current.i);
+      pos.push(current.j);
+      document.cookie = "nivel="+nivel;
+      document.cookie = "tablero="+ctablero;
+      document.cookie = "pos="+pos;
+      document.cookie = "movimientos="+movimientos;
+      document.cookie = "puntaje="+puntaje;
+      document.cookie = "met="+met;
+    }
+  })
+  var usuario = "Abraham";
+  var d = new Date();
+  $("#rend").click(()=>{
+    if (checkGen) {
+      deleteMostCookies();
+      highScores("LA",makeHigh(puntaje,usuario,d));
+      document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+      ende();
+    }
+  })
+  $("#oldGame").click(()=>{
+    dirigir();
+  });
   $("#reset").click(()=>{
     deleteMostCookies();
     document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
@@ -87,7 +79,7 @@ function deleteMostCookies() {
 }
 
 var pantallaA = "<div class='alles'>"+
-  "<h1>Nombre del juego</h1>"+
+  "<h1>Por tí, Potosí</h1>"+
   "<div class='buttons'>"+
     "<button type='button' id='newGame'>Juego Nuevo</button>";
 var botonNoCookies = "<button type='button' id='noGame'>Reanudar Juego</button>";
@@ -96,7 +88,7 @@ var pantallaB = "</div></div>";
 
 
 function dirigir(){
-  $("body").html("<canvas id='canvas' width='1600' height='800'></canvas>"+
+  $(".juego").html("<canvas id='canvas' width='1600' height='800'></canvas>"+
     "<div id='moves'>"+
       "<p>Movimientos: 0</p>"+
     "</div>"+
@@ -148,7 +140,7 @@ function ende(){
     pantallaEndA += rendido;
   }
   pantallaEndA += pantallaEndB;
-  $("body").html(pantallaEndA);
+  $(".juego").html(pantallaEndA);
 }
 
 function pantallaInicio() {
@@ -158,9 +150,9 @@ function pantallaInicio() {
     pantallaA += botonCookies;
   }
   pantallaA += pantallaB;
-  $("body").html(pantallaA);
+  $(".juego").html(pantallaA);
   $("#newGame").click(()=>{
-    $("body").html("<div class='todo'>"+
+    $(".juego").html("<div class='todo'>"+
       "<div class='title'>"+
         "<h1>Escoge a tu personaje</h1>"+
       "</div>"+
@@ -228,7 +220,6 @@ function pantallaInicio() {
       "</div>"+
     "</div>")
   });
-
 }
 
 function reply_click(clicked_id){
@@ -242,7 +233,7 @@ function reply_click(clicked_id){
 
 var figur = getCookie("personaje");
 if (figur) {
-  $("body").html(
+  $(".juego").html(
   "<img id='charac' width='100' height='100' src='../../statics/media/personajes/"+figur+".png'>"+
   "<img id='door' width='0' height='0' src='../../statics/media/door.jpg'>"+
   "<img id='tile' width='0' height='0' src='../../statics/media/tile.jpg'>"
@@ -603,6 +594,30 @@ function game(evt) {
           speedX -= 1;
         }
         break;
+        case 87:
+        if (!current.pared[0]) {
+          next = tablero[index(current.i,current.j-1)];
+          speedY -= 1;
+        }
+        break;
+        case 68:
+        if (!current.pared[1]) {
+          next = tablero[index(current.i+1,current.j)];
+          speedX += 1;
+        }
+        break;
+        case 83:
+        if (!current.pared[2]) {
+          next = tablero[index(current.i,current.j+1)];
+          speedY += 1;
+        }
+        break;
+        case 65:
+        if (!current.pared[3]) {
+          next = tablero[index(current.i-1,current.j)];
+          speedX -= 1;
+        }
+        break;
       }
       movimientos++;
       document.getElementById("moves").innerHTML = "<p>Movimientos: "+movimientos+"</p>";
@@ -617,10 +632,8 @@ function game(evt) {
         else {
           puntos = 0;
         }
-
         puntaje += parseInt(puntos);
         nivel++;
-
         setTimeout(()=>{
           document.cookie = "nivel="+ nivel;
           document.cookie = "puntaje="+ puntaje;
@@ -637,12 +650,8 @@ function game(evt) {
         },100);
       }
     }
-    else {
-      alert("Por favor espera a que se termine de generar el tablero");
-    }
   }
 }
-
 
 //---------Guardado---------
 function checkGen(){
