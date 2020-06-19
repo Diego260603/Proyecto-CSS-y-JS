@@ -33,25 +33,52 @@
 		transform: translatey(5px);
 	}
 }
+body{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 button{
   height: 50px;
   margin: 1%;
   width: 150px;
+}
+canvas{
+  background-image:url("../media/fondo.jpg");
+  background-size: cover;
 }
 h1{
   color: white;
   font-family: Impact, Charcoal, sans-serif;
   font-size: 100px;
 }
-canvas{
-  background-image:url("../media/fondo.jpg");
-  background-size: cover;
+.abc{
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
+  margin: -5% 40%;
 }
-body{
-  display:flex;
-  align-items: center;
+.alles{
+  align-items: flex-end;
+  background-image: url("../media/ruin.jpg");
+  background-size: cover;
+  display: flex;
+  height: 800px;
   justify-content: center;
+  width: 1600px;
+}
+.buttons{
+  align-items: center;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin:5%;
+}
+.debotones{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .end,.endsad{
   align-items: center;
@@ -62,36 +89,26 @@ body{
   justify-content: center;
   width: 1600px;
 }
-.text{
-  align-items: center;
-  display:flex;
-}
 .end{
   background-image: url("../media/doggo.jpg");
 }
-.debotones{
+.endsad{
+  background-image: url("../media/sad.jpg");
+}
+.given{
+  color: crimson;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
+}
+.text{
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display:flex;
 }
 .masbotones{
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.ventana{
-  animation: fade2 1s ease-out 1;
-  background-color: rgba(0, 0, 0, 0);
-  height:800px;
-  position: absolute;
-  top: 0px;
-  width:1600px;
-  z-index: 10;
-}
-.endsad{
-  background-image: url("../media/sad.jpg");
 }
 .resu{
   font-size: 80px;
@@ -110,31 +127,14 @@ body{
   justify-content: center;
   margin: 0 20%;
 }
-.abc{
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 40px;
-  margin: -5% 40%;
-}
-.given{
-  color: crimson;
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 40px;
-}
-.alles{
-  align-items: flex-end;
-  background-image: url("../media/ruin.jpg");
-  background-size: cover;
-  display: flex;
-  height: 800px;
-  justify-content: center;
-  width: 1600px;
-}
-.buttons{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin:5%;
+.ventana{
+  animation: fade2 1s ease-out 1;
+  background-color: rgba(0, 0, 0, 0);
+  height:800px;
+  position: absolute;
+  top: 0px;
+  width:1600px;
+  z-index: 10;
 }
 .todo{
   background-image: url("../media/spooky-woods.jpg");
