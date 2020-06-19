@@ -163,6 +163,9 @@ body{
   height:100px;
   width:100px;
 }
+button:hover{
+  cursor: pointer;
+}
 .uno:hover{
   animation: float 1s infinite ease-in-out;
   background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red,violet, indigo, blue, green);

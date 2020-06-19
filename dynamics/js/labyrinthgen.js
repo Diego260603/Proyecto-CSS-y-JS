@@ -6,64 +6,56 @@ $(document).ready(function() {
     }else{
       pantallaInicio();
     }
-    $("#save").click(function(evt){
-      if (checkGen()) {
-        let ctablero = [];
-        let pos = [];
-        for (var i = 0; i < tablero.length; i++) {
-          switch(tablero[i].pared.join(" ")){
-            case 'false false false false': ctablero.push(0);break;
-            case 'true false false false': ctablero.push(1);break;
-            case 'false true false false': ctablero.push(2);break;
-            case 'false false true false': ctablero.push(3);break;
-            case 'false false false true': ctablero.push(4);break;
-            case 'true true false false': ctablero.push(5);break;
-            case 'true false true false': ctablero.push(6);break;
-            case 'true false false true': ctablero.push(7);break;
-            case 'false true true false': ctablero.push(8);break;
-            case 'false true false true': ctablero.push(9);break;
-            case 'false false true true': ctablero.push(10);break;
-            case 'true true true false': ctablero.push(11);break;
-            case 'false true true true': ctablero.push(12);break;
-            case 'true false true true': ctablero.push(13);break;
-            case 'true true false true': ctablero.push(14);break;
-          }
-        }
-        pos.push(current.i);
-        pos.push(current.j);
-        document.cookie = "nivel="+nivel;
-        document.cookie = "tablero="+ctablero;
-        document.cookie = "pos="+pos;
-        document.cookie = "movimientos="+movimientos;
-        document.cookie = "puntaje="+puntaje;
-        document.cookie = "met="+met;
-      }
-      else {
-        alert("Por favor, espera a que se haya generado el tablero")
-      }
-    })
-
-
-
-    var usuario = "Abraham";
-    var d = new Date();
-    $("#rend").click(()=>{
-      if (checkGen) {
-        deleteMostCookies();
-        highScores("LA",makeHigh(puntaje,usuario,d));
-        document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
-        ende();
-      }
-      else {
-        alert("Por favor, espera a que se haya generado el tablero")
-      }
-    })
-    $("#oldGame").click(()=>{
-      dirigir();
-    });
   } else {
     ende();
   }
+  $("#save").click(function(evt){
+    if (checkGen()) {
+      document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+      let ctablero = [];
+      let pos = [];
+      for (var i = 0; i < tablero.length; i++) {
+        switch(tablero[i].pared.join(" ")){
+          case 'false false false false': ctablero.push(0);break;
+          case 'true false false false': ctablero.push(1);break;
+          case 'false true false false': ctablero.push(2);break;
+          case 'false false true false': ctablero.push(3);break;
+          case 'false false false true': ctablero.push(4);break;
+          case 'true true false false': ctablero.push(5);break;
+          case 'true false true false': ctablero.push(6);break;
+          case 'true false false true': ctablero.push(7);break;
+          case 'false true true false': ctablero.push(8);break;
+          case 'false true false true': ctablero.push(9);break;
+          case 'false false true true': ctablero.push(10);break;
+          case 'true true true false': ctablero.push(11);break;
+          case 'false true true true': ctablero.push(12);break;
+          case 'true false true true': ctablero.push(13);break;
+          case 'true true false true': ctablero.push(14);break;
+        }
+      }
+      pos.push(current.i);
+      pos.push(current.j);
+      document.cookie = "nivel="+nivel;
+      document.cookie = "tablero="+ctablero;
+      document.cookie = "pos="+pos;
+      document.cookie = "movimientos="+movimientos;
+      document.cookie = "puntaje="+puntaje;
+      document.cookie = "met="+met;
+    }
+  })
+  var usuario = "Abraham";
+  var d = new Date();
+  $("#rend").click(()=>{
+    if (checkGen) {
+      deleteMostCookies();
+      highScores("LA",makeHigh(puntaje,usuario,d));
+      document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
+      ende();
+    }
+  })
+  $("#oldGame").click(()=>{
+    dirigir();
+  });
   $("#reset").click(()=>{
     deleteMostCookies();
     document.cookie = "estado=;expires=Thu, 04 Jun 2010 00:00:00 GMT";
@@ -228,7 +220,6 @@ function pantallaInicio() {
       "</div>"+
     "</div>")
   });
-
 }
 
 function reply_click(clicked_id){
@@ -617,10 +608,8 @@ function game(evt) {
         else {
           puntos = 0;
         }
-
         puntaje += parseInt(puntos);
         nivel++;
-
         setTimeout(()=>{
           document.cookie = "nivel="+ nivel;
           document.cookie = "puntaje="+ puntaje;
@@ -637,12 +626,8 @@ function game(evt) {
         },100);
       }
     }
-    else {
-      alert("Por favor espera a que se termine de generar el tablero");
-    }
   }
 }
-
 
 //---------Guardado---------
 function checkGen(){

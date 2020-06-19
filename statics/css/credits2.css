@@ -134,7 +134,7 @@
     width: 500px;
     transition: width 1.2s ease-in-out;
   }
-  .gamefield{
+  .creditsfield{
     display: none;
   }
 }
@@ -249,7 +249,7 @@
     width: 1000px;
     transition: width 1.2s ease-in-out;
   }
-  .gamefield{
+  .creditsfield{
     display: none;
   }
 }
@@ -341,22 +341,217 @@
   .copy{
     text-align: right;
   }
+  /*-----------CREDITOS------------*/
+  .creditsfield{
+    width: 96vw;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    align-self: center;
+  }
+  /*-----------1EROS-------------*/
+  .credits1{
+    width: 100%;
+    height: 700px;
+    background-color: #08A61C;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: space-between;
+    margin-bottom: 25px;
+  }
+  .credits1>.foto1{
+    margin: 50px;
+  }
+  .credits1>.foto1 img{
+    width: 800;
+    height: 600px;
+  }
+  .credits1>.datos1{
+    width: auto;
+    height: 600px;
+    align-self: flex-end;
+    text-align: center;
+    line-height: 1.0;
+  }
+  .credits1>.datos1 p{
+    font-size: 2em;
+    text-decoration: underline;
+  }
+  .credits1>.datos1 span .dato{
+    font-size: 24px;
+    text-decoration: none;
+  }
+  .credits1>.datos1 .logros{
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  .credits1>.datos1 .logros p{
+    font-size: 4em;
+    text-decoration: underline;
+  }
+  .credits1>.datos1 .logros span{
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .credits1>.datos1 .logros .important{
+    font-size: 24px;
+    text-decoration: underline;
+  }
+  /*-----------2NDOS-------------*/
+  .credits2{
+    width: 100%;
+    height: 700px;
+    background-color: #08A61C;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .credits2>.foto2{
+    margin: 50px;
+  }
+  .credits2>.foto2 img{
+    width: auto;
+    height: 600px;
+  }
+  .credits2>.datos2{
+    width: auto;
+    height: 600px;
+    align-self: flex-end;
+    text-align: center;
+    line-height: 1.0;
+  }
+  .credits2>.datos2 p{
+    font-size: 2em;
+    text-decoration: underline;
+  }
+  .credits2>.datos2 span .dato{
+    font-size: 24px;
+    text-decoration: none;
+  }
+  .credits2>.datos2 .logros{
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  .credits2>.datos2 .logros p{
+    font-size: 4em;
+    text-decoration: underline;
+  }
+  .credits2>.datos2 .logros span{
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .credits2>.datos2 .logros .important{
+    font-size: 24px;
+    text-decoration: underline;
+  }
+  /*-----------3ROS-------------*/
+  .credits3{
+    width: 100%;
+    height: 700px;
+    background-color: #08A61C;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .credits3>.foto3{
+    margin: 50px;
+  }
+  .credits3>.foto3 img{
+    width: auto;
+    height: 600px;
+  }
+  .credits3>.datos3{
+    width: auto;
+    height: 600px;
+    align-self: flex-end;
+    text-align: center;
+    line-height: 1.0;
+  }
+  .credits3>.datos3 p{
+    font-size: 2em;
+    text-decoration: underline;
+  }
+  .credits3>.datos3 span .dato{
+    font-size: 24px;
+    text-decoration: none;
+  }
+  .credits3>.datos3 .logros{
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  .credits3>.datos3 .logros p{
+    font-size: 4em;
+    text-decoration: underline;
+  }
+  .credits3>.datos3 .logros span{
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .credits3>.datos3 .logros .important{
+    font-size: 24px;
+    text-decoration: underline;
+  }
+  /*-----------4TOS-------------*/
+  .credits4{
+    width: 100%;
+    height: 700px;
+    background-color: #08A61C;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .credits4>.foto4{
+    margin: 50px;
+  }
+  .credits4>.foto4 img{
+    width: auto;
+    height: 600px;
+  }
+  .credits4>.datos4{
+    width: auto;
+    height: 600px;
+    align-self: flex-end;
+    text-align: center;
+    line-height: 1.0;
+  }
+  .credits4>.datos4 p{
+    font-size: 2em;
+    text-decoration: underline;
+  }
+  .credits4>.datos4 span .dato{
+    font-size: 24px;
+    text-decoration: none;
+  }
+  .credits4>.datos4 .logros{
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  .credits4>.datos4 .logros p{
+    font-size: 4em;
+    text-decoration: underline;
+  }
+  .credits4>.datos4 .logros span{
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .credits4>.datos4 .logros .important{
+    font-size: 24px;
+    text-decoration: underline;
+  }
+  /*-----------FIN DE LOS CRÉDITOS-----------*/
   .descgame{
     font-family: "Inconsolata";
-    font-size: 24px;
-    margin: 5%;
+    font-size: 20px;
   }
   .juegotitulo{
     font-family: "Chido";
     font-size: 40px;
-  }
-  .gamefield{
-    width: 96vw;
-    height: 94vh;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background-color: rgb(75, 75, 75);
-    align-self: center;
   }
   .title{
     text-align: center;
@@ -364,5 +559,22 @@
     height: auto;
     padding: 2%;
     background-color: #08A61C;
+  }
+  .titulo{
+    width: 96vw;
+    height: auto;
+    padding: 2%;
+    align-self: center;
+    background-color: #08A61C;
+    margin-top: 20px;
+  }
+  .titulo>h1{
+    font-family: "Overlock-SC";
+    font-size: 96px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    text-decoration: underline overline;
+    border-left: 8px solid black;
+    border-right: 8px solid black;
   }
 }
