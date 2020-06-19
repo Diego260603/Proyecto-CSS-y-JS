@@ -385,9 +385,13 @@
     align-self: center;
   }
   .juego{
+<<<<<<< HEAD
     align-items: center;
     display: flex;
     justify-content: center;
+=======
+    align-self: center;
+>>>>>>> f8aca207ae2c92131bdb7890a45c2107efac9c49
   }
   .title{
     text-align: center;
