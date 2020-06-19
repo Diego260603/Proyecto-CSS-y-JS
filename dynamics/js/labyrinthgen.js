@@ -79,7 +79,7 @@ function deleteMostCookies() {
 }
 
 var pantallaA = "<div class='alles'>"+
-  "<h1>Por tí, Potosí</h1>"+
+  "<h1>Nombre del juego</h1>"+
   "<div class='buttons'>"+
     "<button type='button' id='newGame'>Juego Nuevo</button>";
 var botonNoCookies = "<button type='button' id='noGame'>Reanudar Juego</button>";
@@ -88,7 +88,7 @@ var pantallaB = "</div></div>";
 
 
 function dirigir(){
-  $(".juego").html("<canvas id='canvas' width='1600' height='800'></canvas>"+
+  $("body").html("<canvas id='canvas' width='1600' height='800'></canvas>"+
     "<div id='moves'>"+
       "<p>Movimientos: 0</p>"+
     "</div>"+
@@ -140,7 +140,7 @@ function ende(){
     pantallaEndA += rendido;
   }
   pantallaEndA += pantallaEndB;
-  $(".juego").html(pantallaEndA);
+  $("body").html(pantallaEndA);
 }
 
 function pantallaInicio() {
@@ -150,9 +150,9 @@ function pantallaInicio() {
     pantallaA += botonCookies;
   }
   pantallaA += pantallaB;
-  $(".juego").html(pantallaA);
+  $("body").html(pantallaA);
   $("#newGame").click(()=>{
-    $(".juego").html("<div class='todo'>"+
+    $("body").html("<div class='todo'>"+
       "<div class='title'>"+
         "<h1>Escoge a tu personaje</h1>"+
       "</div>"+
@@ -233,7 +233,7 @@ function reply_click(clicked_id){
 
 var figur = getCookie("personaje");
 if (figur) {
-  $(".juego").html(
+  $("body").html(
   "<img id='charac' width='100' height='100' src='../../statics/media/personajes/"+figur+".png'>"+
   "<img id='door' width='0' height='0' src='../../statics/media/door.jpg'>"+
   "<img id='tile' width='0' height='0' src='../../statics/media/tile.jpg'>"
@@ -589,30 +589,6 @@ function game(evt) {
         }
         break;
         case 37:
-        if (!current.pared[3]) {
-          next = tablero[index(current.i-1,current.j)];
-          speedX -= 1;
-        }
-        break;
-        case 87:
-        if (!current.pared[0]) {
-          next = tablero[index(current.i,current.j-1)];
-          speedY -= 1;
-        }
-        break;
-        case 68:
-        if (!current.pared[1]) {
-          next = tablero[index(current.i+1,current.j)];
-          speedX += 1;
-        }
-        break;
-        case 83:
-        if (!current.pared[2]) {
-          next = tablero[index(current.i,current.j+1)];
-          speedY += 1;
-        }
-        break;
-        case 65:
         if (!current.pared[3]) {
           next = tablero[index(current.i-1,current.j)];
           speedX -= 1;
