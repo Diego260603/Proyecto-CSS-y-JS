@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 
+
   //los tetronimios
   const lTetromino = [
     [1, width+1, width*2+1, 2],
@@ -61,13 +62,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   //poner funciones las teclas
   function control(e) {
-    if(e.keyCode === 39) {
+    if(e.keyCode === 68) {
       moveRight()
-    } else if (e.keyCode ===38) {
+    } else if (e.keyCode ===87) {
       rotate()
-    } else if (e.keyCode ===37) {
+    } else if (e.keyCode ===65) {
       moveLeft()
-    } else if (e.keyCode === 40) {
+    } else if (e.keyCode === 83) {
       moveDown()
     }
   }

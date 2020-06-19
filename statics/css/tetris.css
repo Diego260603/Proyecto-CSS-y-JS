@@ -4,6 +4,11 @@ div{
   height: 20px;
   width: 20px;
 }
+.juego{
+  width: 50vw;
+  height: 96vh;
+  background-color: green;
+}
 .game{
     margin-left: auto;
     margin-right: auto;
@@ -45,16 +50,6 @@ div{
 }
 
 .boton{
-  height:20px;
-  width:100px;
-  margin: -20px -50px;
-  position:relative;
-  top:50%;
-  left:50%;
-
-}
-
-.recarga{
   height:20px;
   width:100px;
   margin: -20px -50px;
