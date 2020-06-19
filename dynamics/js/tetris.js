@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 
+
   //los tetronimios
   const lTetromino = [
     [1, width+1, width*2+1, 2],
