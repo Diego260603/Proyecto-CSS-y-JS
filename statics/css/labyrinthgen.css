@@ -33,10 +33,6 @@
 		transform: translatey(5px);
 	}
 }
-.text{
-  align-items: center;
-  display:flex;
-}
 button{
   height: 50px;
   width: 100px;
@@ -56,6 +52,30 @@ body{
   justify-content: center;
   flex-direction: column;
 }
+.abc{
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
+  margin: -5% 40%;
+}
+.alles{
+  align-items: flex-end;
+  background-image: url("../media/ruin.jpg");
+  background-size: cover;
+  display: flex;
+  height: 800px;
+  justify-content: center;
+  width: 1600px;
+}
+.buttons{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin:5%;
+}
+button:hover{
+  cursor: pointer;
+}
 .end,.endsad{
   align-items: center;
   background-size: 1600px 800px;
@@ -68,16 +88,13 @@ body{
 .end{
   background-image: url("../media/doggo.jpg");
 }
-.ventana{
-  animation: fade2 1s ease-out 1;
-  background-color: rgba(0, 0, 0, 0);
-  height:800px;
-  width:1600px;
-  position: absolute;
-  top: 1px;
-}
 .endsad{
   background-image: url("../media/sad.jpg");
+}
+.given{
+  color: crimson;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
 }
 .resu{
   font-size: 80px;
@@ -96,31 +113,9 @@ body{
   justify-content: center;
   margin: 0 20%;
 }
-.abc{
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 40px;
-  margin: -5% 40%;
-}
-.given{
-  color: crimson;
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 40px;
-}
-.alles{
-  align-items: flex-end;
-  background-image: url("../media/ruin.jpg");
-  background-size: cover;
-  display: flex;
-  height: 800px;
-  justify-content: center;
-  width: 1600px;
-}
-.buttons{
+.text{
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin:5%;
+  display:flex;
 }
 .todo{
   background-image: url("../media/spooky-woods.jpg");
@@ -158,20 +153,25 @@ body{
   transition: color, .5s;
   width:180px;
 }
-.uno div{
-  background-size: cover;
-  height:100px;
-  width:100px;
-}
-button:hover{
-  cursor: pointer;
-}
 .uno:hover{
   animation: float 1s infinite ease-in-out;
   background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red,violet, indigo, blue, green);
   color: white;
   cursor: pointer;
   background-size: 400% 100%;
+}
+.uno div{
+  background-size: cover;
+  height:100px;
+  width:100px;
+}
+.ventana{
+  animation: fade2 1s ease-out 1;
+  background-color: rgba(0, 0, 0, 0);
+  height:800px;
+  width:1600px;
+  position: absolute;
+  top: 1px;
 }
 #titel{
   font-size: 80px;
