@@ -1,8 +1,239 @@
+@keyframes fade {
+  0%{
+    background-color: rgba(0, 0, 0, 0);
+  }
+  80%{
+    background-color: rgba(0, 0, 0, 1);
+  }
+  100%{
+    background-color: rgba(0, 0, 0, 1);
+  }
+}
+@keyframes fade2 {
+  0%{
+    background-color: rgba(0, 0, 0, 1);
+  }
+  100%{
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+@keyframes float {
+  0% {
+    background-position: 0 0;
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(5px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+    background-position: 92.5% 0;
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(5px);
+	}
+}
+.text{
+  align-items: center;
+  display:flex;
+}
+button{
+  height: 50px;
+  width: 100px;
+}
+h1{
+  color: white;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 100px;
+}
 canvas{
-  background-color: #FFCA28;
+  background-image:url("../media/fondo.jpg");
+  background-size: cover;
 }
 body{
   display:flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+.end,.endsad{
+  align-items: center;
+  background-size: 1600px 800px;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  justify-content: center;
+  width: 1600px;
+}
+.end{
+  background-image: url("../media/doggo.jpg");
+}
+.ventana{
+  animation: fade2 1s ease-out 1;
+  background-color: rgba(0, 0, 0, 0);
+  height:800px;
+  width:1600px;
+  position: absolute;
+  top: 1px;
+}
+.endsad{
+  background-image: url("../media/sad.jpg");
+}
+.resu{
+  font-size: 80px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+.resul{
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+}
+.resul div{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 20%;
+}
+.abc{
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
+  margin: -5% 40%;
+}
+.given{
+  color: crimson;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
+}
+.alles{
+  align-items: flex-end;
+  background-image: url("../media/ruin.jpg");
+  background-size: cover;
+  display: flex;
+  height: 800px;
+  justify-content: center;
+  width: 1600px;
+}
+.buttons{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin:5%;
+}
+.todo{
+  background-image: url("../media/spooky-woods.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 800px;
+  width: 1600px;
+}
+.title{
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+.personajes{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  justify-content: space-around;
+  width: 1600px;
+}
+.uno{
+  align-items: center;
+  background-color: rgba(103, 96, 96, 0.4);
+  border-radius: 20px;
+  color: #a4d8f7;
+  display: flex;
+  flex-direction: column;
+  font-family: Impact,Charcoal , sans-serif;
+  font-size: 20px;
+  height: 200px;
+  justify-content: center;
+  margin: 1%;
+  transition: color, .5s;
+  width:180px;
+}
+.uno div{
+  background-size: cover;
+  height:100px;
+  width:100px;
+}
+.uno:hover{
+  animation: float 1s infinite ease-in-out;
+  background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red,violet, indigo, blue, green);
+  color: white;
+  cursor: pointer;
+  background-size: 400% 100%;
+}
+#titel{
+  font-size: 80px;
+}
+#oldGame,#newGame,#noGame{
+  background-size: 400px 75px;
+  border-width: 0;
+  border-radius: 10px;
+  color: white;
+  font-family: Impact, Charcoal,sans-serif;
+  font-size: 40px;
+  height: 75px;
+  margin: 3%;
+  width: 400px;
+}
+#oldGame,#newGame{
+  background-image: url("../media/snow2.gif");
+}
+#oldGame:hover,#newGame:hover{
+  background-image: url("../media/pulse.gif");
+  cursor: pointer;
+}
+#noGame{
+  background-image: url("../media/static.gif");
+  color: #777571;
+}
+#aguacate{
+  background-image: url("../../statics/media/personajes/aguacate.png");
+}
+#bala{
+  background-image: url("../../statics/media/personajes/bala.png");
+}
+#cactus{
+  background-image: url("../../statics/media/personajes/cactus.png");
+}
+#crayola{
+  background-image: url("../../statics/media/personajes/crayola.png");
+}
+#nieve{
+  background-image: url("../../statics/media/personajes/nieve.png");
+}
+#ojo{
+  background-image: url("../../statics/media/personajes/ojo.png");
+}
+#pan{
+  background-image: url("../../statics/media/personajes/pan.png");
+}
+#pantalon{
+  background-image: url("../../statics/media/personajes/pantalon.png");
+}
+#papel{
+  background-image: url("../../statics/media/personajes/papel.png");
+}
+#sal{
+  background-image: url("../../statics/media/personajes/sal.png");
+}
+#tetris{
+  background-image: url("../../statics/media/personajes/tetris.png");
+}
+#vasin{
+  background-image: url("../../statics/media/personajes/vasin.png");
+}
+#destapa{
+  background-image: url("../../statics/media/personajes/destapa.png");
+}
+#doge{
+  background-image: url("../../statics/media/personajes/doge.png");
 }
