@@ -45,5 +45,6 @@ En el tetris hay un easter egg llamado por nosotros efecto pac-man, si lo encuen
 -Los scores solo aceptan las puntuaciones del laberiento
 -El cambio de paletas de colores se debe hacer desde el código, debido a que no se implemento la opción
 -El spaceinvaders no esta implementado, debido a que no se acabó y el juego base no agarro con el xampp, por lo cual nunca se pudo probar
+-pagPrin.html en la carpeta templates es la página index.html
 
 
