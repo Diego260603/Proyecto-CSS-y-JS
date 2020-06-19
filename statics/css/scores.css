@@ -23,6 +23,10 @@
   font-family: "Chido";
   src: url(../libs/fontawesome/FONTS/MetalMania-Regular.ttf);
 }
+@font-face {
+  font-family: "Awake";
+  src: url(../libs/fontawesome/FONTS/I_Am_Awake.ttf);
+}
 /*-------------MEDIA QUERI PARA EL ANCHO Y LA ORIENTACION INCORRECTOS-------------*/
 @media screen and (max-width: 1800px) and (orientation: portrait){
   body{
@@ -324,6 +328,35 @@
   .nav>nav a:active{
     color: rgb(255, 255, 255);
   }
+  /*----------TABLA------------*/
+  table, th, td {
+    border: 3px solid white;
+    color: white;
+  }
+  table{
+    height: 600px;
+    margin: 5%;
+    width: 999px;
+  }
+  th,td{
+    text-align: center;
+    width: 333px;
+  }
+  th{
+    background-color: crimson;
+    font-family: "Awake";
+    font-size: 60px;
+  }
+  td{
+    background-color: #ef98a9;
+    font-family: Impact,Charcoal,sans-serif;
+    font-size: 30px;
+  }
+  .class{
+    background-color: #e45672;
+    font-family: Impact,Charcoal,sans-serif;
+    font-size: 40px;
+  }
   .aviso{
     display: none;
   }
@@ -363,6 +396,11 @@
     height: auto;
     padding: 2%;
     background-color: #0088B3;
+  }
+  .scoreJuego1{
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
   .titulo{
     width: 96vw;
