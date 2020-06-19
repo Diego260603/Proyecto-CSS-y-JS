@@ -3,7 +3,7 @@
 #### Ellon Musk Jason Smith Chrisler Super Styled Bannana Arcade B)
 
 Integrantes:
-1. Gabriel Rivas
+1. Gabriel Rivas (Unknow) 
 2. Abraham López
 3. Maximiliano Ruíz
 4. Diego Muriel
